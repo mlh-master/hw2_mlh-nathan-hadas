@@ -285,8 +285,6 @@ def random_forest_optimization(X_train, Y_train, x_test, y_test):
     y_pred_test = rfc.predict(x_test)
     y_pred_proba_test = rfc.predict_proba(x_test)
     print('random forest results: ')
-    loss = log_loss(y_test, y_pred_proba_test)
-    print('Loss = ', loss, '\n')
 
     confusion_matrix(rfc, x_test, y_test, y_pred_test, y_pred_proba_test)
 
