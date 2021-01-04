@@ -322,10 +322,12 @@ def PCA_transform(X_train, x_test, n_components=2):
 
     :return the datasets after reduced dimensionality
     """""
-
+    scaler = StandardScaler()
+    X_train_scaled = scaler.fit_transform(X_train)
+    x_test_scaled = scaler.transform(x_test)
     pca = PCA(n_components=n_components, whiten=True)
     # apply PCA transformation
-    X_train_pca = pca.fit_transform(X_train)
-    X_test_pca = pca.transform(x_test)
+    X_train_pca = pca.fit_transform(X_train_scaled)
+    x_test_pca = pca.transform(x_test_scaled)
 
-    return X_train_pca, X_test_pca
+    return X_train_pca, x_test_pca
